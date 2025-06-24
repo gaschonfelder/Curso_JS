@@ -12,16 +12,16 @@ export default class DropdownMenu {
   activeDropDownMenu(event) {
     event.preventDefault();
     const element = event.currentTarget;
-    element.add(this.activeClass);
+    element.classList.add(this.activeClass);
     outsideClick(element, this.events, () => {
       element.classList.remove("active");
     });
   }
 
   addDropDownMenuEvent() {
-    dropdownMenus.forEach((menu) => {
+    this.dropdownMenus.forEach((menu) => {
       this.events.forEach((userEvent) => {
-        menu.addEventListener(userEvent, activeDropDownMenu);
+        menu.addEventListener(userEvent, this.activeDropDownMenu);
       });
     });
   }
